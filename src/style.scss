@@ -1,0 +1,185 @@
+.inicial {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  --color: 0;
+  --color-primary: hsl(var(--color), 100%, 0%, 0.75);
+  --color-second: hsl(var(--color), 1%, 27%, 1);
+  --color-link-active: hsl(var(--color), 0%, 36%, 1);
+  --color-text: hsl(var(--color), 3%, 65%, 1);
+  --color-subtitle: hsl(var(--color), 30%, 60%);
+  --color-hover: hsl(var(--color), 8%, 18%, 0.5);
+  background-color: var(--color-primary);
+  min-height: 100vh;
+  color: #fff;
+}
+
+.inicial.blue,
+.inicial.warning,
+.inicial.success,
+.inicial.success,
+.inicial.danger,
+.inicial.violet {
+  --color: 211;
+  --color-primary: hsl(var(--color), 65%, 45%, 0.72);
+  --color-second: hsl(var(--color), 100%, 95%, 0.2);
+  --color-link-active: hsl(var(--color), 100%, 100%, 0.4);
+  --color-text: hsl(var(--color), 95%, 98%, 1);
+  --color-subtitle: hsl(var(--color), 8%, 60%);
+}
+
+.inicial.info {
+  --color: 206;
+  --color-primary: hsl(var(--color), 65%, 45%, 0.72);
+  --color-second: hsl(var(--color), 65%, 67%, 0.55);
+  --color-link-active: hsl(var(--color), 65%, 70%, 1);
+  --color-text: hsl(var(--color), 95%, 98%, 1);
+  --color-subtitle: hsl(var(--color), 8%, 60%);
+}
+
+.inicial.blue {
+  background: linear-gradient(45deg, #2f6e5b, #314152);
+}
+
+.inicial.warning {
+  background: #cd8431;
+}
+
+.inicial.success {
+  background: #87cb16;
+}
+
+.inicial.danger {
+  background: #fb404b;
+}
+.inicial.violet {
+  background: #9368e9;
+}
+
+@mixin grid($width) {
+  display: grid;
+  grid-template-columns: $width 1fr;
+  transition: 0.5s all;
+}
+
+.red {
+  --color: 250;
+}
+
+.blue {
+  --color: 0;
+}
+
+.wrapper.separate {
+  @include grid(250px);
+  @media screen and (max-width: 800px) {
+    @include grid(80px);
+  }
+  @media screen and (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wrapper.full {
+  background-color: red !important;
+}
+
+.sidebar_logo {
+  width: 250px;
+  transition: all 0.5s ease-in-out;
+  margin: 0.5rem 0;
+  padding: 0 20px;
+  @media screen and (max-width: 800px) {
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  width: 250px;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s ease-in-out;
+  z-index: 50;
+  @media screen and (max-width: 800px) {
+    transition: all 0.5s ease-in-out;
+    width: 80px;
+  }
+  @media screen and (max-width: 500px) {
+    @include grid(80px);
+    display: none;
+  }
+}
+
+.text-logo {
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+  @media screen and (max-width: 800px) {
+    opacity: 0;
+  }
+}
+
+.aside-item .content-item {
+  @media screen and (max-width: 800px) {
+    transition: all 0.5s ease-in-out;
+  }
+
+  i {
+    transform: translateX(14px);
+  }
+  .text-icon {
+    opacity: 1;
+    transition: 0.5s;
+    @media screen and (max-width: 800px) {
+      opacity: 0;
+      transition: 0.5s;
+    }
+  }
+}
+
+.acordion {
+  .acordion-body {
+    display: block;
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
+  }
+  .down-arrow {
+    opacity: 1;
+    @media screen and (max-width: 800px) {
+      opacity: 0 !important;
+    }
+  }
+}
+
+.acordion.show {
+  height: auto !important;
+  transition: all 0.5s ease;
+  @media screen and (max-width: 800px) {
+    height: 50px !important;
+  }
+}
+
+.sidebar-item-label {
+  display: block;
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+/*============ Navbar ================*/
+
+.navbar {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  width: calc(100% - 250px);
+  transition: 0.5s;
+  z-index: 20;
+  @media screen and (max-width: 800px) {
+    width: calc(100% - 80px);
+    transition: 1s;
+  }
+}
