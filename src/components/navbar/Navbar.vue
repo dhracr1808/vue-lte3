@@ -27,7 +27,7 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <SimpleLinkVue text="Account" />
             <DropdownVue text="Dropdown" />
-            <SimpleLinkVue text="Log out" />
+            <SimpleLinkVue text="Log out" @click="userStore" />
           </ul>
         </div>
       </div>
@@ -38,6 +38,8 @@
 <script setup>
 import DropdownVue from "./Dropdown.vue";
 import SimpleLinkVue from "./SimpleLink.vue";
+import { useUserStore } from "./../../store/userStore";
+const userStore = useUserStore().logoutUser;
 </script>
 
 <style lang="scss" scoped></style>

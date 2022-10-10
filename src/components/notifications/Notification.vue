@@ -1,19 +1,19 @@
 <template>
-  <div class="toaster-notification">notification</div>
+  <div class="toaster-notification"></div>
 </template>
 
 <script setup></script>
 
 <style lang="scss" scoped>
 .toaster-notification {
-  width: 200px;
-  height: 80px;
-  background-color: red;
   position: absolute;
-  top: 4rem;
+  top: 0;
   right: 0;
+  padding: 1rem 0 1rem 1rem;
   z-index: 150;
   display: none;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 .toaster-notification.active {

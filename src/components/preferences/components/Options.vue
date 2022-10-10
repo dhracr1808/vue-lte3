@@ -13,7 +13,7 @@
         style="background-color: #35495e"
       ></div>
       <div
-        class="select-color warming bg-warning"
+        class="select-color warning bg-warning"
         @click="changeColor($event, 'warning')"
       ></div>
       <div

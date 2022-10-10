@@ -106,3 +106,28 @@ li {
   background-color: #efefef;
   border-radius: 0.5rem;
 }
+
+/*=============== messages ==================*/
+.toaster-notification .new-message {
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  margin-bottom: 0.8rem;
+  border-radius: 5px;
+}
+
+.toaster-notification .new-message .line {
+  background-color: rgb(0, 228, 76);
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+}
+
+@keyframes line-animation {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}

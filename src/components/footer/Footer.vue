@@ -21,5 +21,15 @@ const date = new Date().getFullYear();
   height: 80px;
   justify-content: space-between;
   align-items: center;
+  animation: 0.01s showFooter forwards;
+}
+
+@keyframes showFooter {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>

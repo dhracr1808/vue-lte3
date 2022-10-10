@@ -4,6 +4,7 @@ import PreferencesVue from "./components/preferences/Preferences.vue";
 import NavbarVue from "./components/navbar/Navbar.vue";
 import FooterVue from "./components/footer/Footer.vue";
 import NotificationVue from "./components/notifications/Notification.vue";
+import Loader from "./components/loader/Loader.vue";
 
 import { useUserStore } from "./store/userStore";
 import { computed } from "vue";
@@ -17,6 +18,7 @@ const navbar = computed(() => (user.isAuthenticated ? "content-views" : ""));
 
 <template>
   <div class="wrapper m-0 p-0 bg-light" :class="isAuth">
+    <Loader v-if="user.loadingUser" />
     <SidebarVue v-if="user.isAuthenticated" />
     <div :class="navbar">
       <div v-if="user.isAuthenticated">

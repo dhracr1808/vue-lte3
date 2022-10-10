@@ -1,27 +1,5 @@
 <template>
   <div class="content-login">
-    <div class="popop" v-show="userStore.popop">
-      <div class="popop-content card p-4">
-        <div class="fs-1 text-center text-danger">
-          <i class="fa-regular fa-circle-xmark"></i>
-        </div>
-
-        <div class="my-3">
-          <p class="text-center m-0">
-            <small><b>Email or password is wrong </b></small>
-          </p>
-        </div>
-        <button
-          type="button"
-          class="btn btn-danger fw-bold"
-          @click="userStore.togglePopop"
-          style="width: 100%"
-        >
-          ok
-        </button>
-      </div>
-    </div>
-
     <div class="">
       <img
         src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
@@ -30,12 +8,12 @@
     </div>
     <div class="">
       <form class="form" @submit.prevent="handleForm">
-        <div class="ventana1" v-if="!nextModal">
-          <h3 class="fw-light text-center text-primary">Iniciar session</h3>
+        <div class="ventana1">
+          <h3 class="fw-light text-center text-primary">Crear Cuenta</h3>
           <div class="form-group">
             <div class="content-input">
               <input
-                type="text"
+                type="email"
                 id="username"
                 class="form-control"
                 placeholder="username"
@@ -61,46 +39,18 @@
           </div>
 
           <div class="form-group">
-            <button
-              type="button"
-              class="btn btn-primary p-2 fw-bold"
-              style="width: 100%"
-              @click="changeNextModal"
-            >
-              siguiente
-            </button>
-            <span class="d-block mt-3 fw-bodler">
-              crear cuenta
-              <router-link to="/register">aquí</router-link>
-            </span>
-          </div>
-          <LoginVue />
-          <OptionsSession />
-        </div>
-
-        <div v-if="nextModal" class="mt-5 pt-3">
-          <h3 class="email d-flex justify-content-center fw-bolder mb-3 fs-6">
-            <span
-              class="bg-light py-2 px-4 d-flex justify-content-center align-items-center gap-2 rounded-pill fw-light"
-              @click="changeNextModal"
-            >
-              <i class="fa-solid fa-user text-muted"></i>
-              {{ email }}
-              <i class="fa-solid fa-angle-down text-muted"></i>
-            </span>
-          </h3>
-          <div class="form-group mt-4">
             <div class="content-input">
               <input
-                type="text"
+                type="password"
                 id="password"
                 class="form-control"
                 placeholder="password"
-                v-model="password"
-                autofocus
+                @blur="input"
+                @keyup="input"
+                v-model.trim="password"
               />
               <label for="password" class="form-label"
-                >Ingresa tu Contraseña</label
+                >Ingrese contraseña</label
               >
               <div class="icon-input">
                 <i class="fa-regular fa-circle-check success"></i>
@@ -109,22 +59,54 @@
             </div>
 
             <div class="">
-              <p class="p-0 m-0 message-error">
-                <small class="fw-bolder"></small>
+              <p class="mt-1 message-error">
+                <small class="fw-bolder">
+                  debe tener al menos 6 caracteres</small
+                >
+              </p>
+            </div>
+          </div>
+          <div class="form-group" :class="inputConfir">
+            <div class="content-input">
+              <input
+                type="password"
+                id="repeat-password"
+                class="form-control"
+                placeholder="repeat password"
+                v-model.trim="confirpass"
+              />
+              <label for="repeat-password" class="form-label"
+                >confirmar contraseña</label
+              >
+              <div class="icon-input">
+                <i class="fa-regular fa-circle-check success"></i>
+                <i class="fa-regular fa-circle-xmark error"></i>
+              </div>
+            </div>
+
+            <div class="">
+              <p class="mt-1 message-error">
+                <small class="fw-bolder">las contraseñas no coinciden</small>
               </p>
             </div>
           </div>
 
           <div class="form-group">
-            <button
-              type="submit"
-              class="btn btn-primary p-2 fw-bolder"
-              style="width: 100%"
-            >
-              Ingresar
-            </button>
-            <div class="content-loader" v-if="userStore.loadingUser">
-              <span class="loader"></span>
+            <div class="content-input">
+              <button
+                type="submit"
+                class="btn btn-success"
+                style="width: 100%"
+                :disabled="btnDisabled"
+              >
+                Registarse
+              </button>
+            </div>
+
+            <div class="">
+              <p class="mt-1 message-error">
+                <small class="fw-bolder">las contraseñas no coinciden</small>
+              </p>
             </div>
           </div>
         </div>
@@ -134,49 +116,33 @@
 </template>
 
 <script setup>
+import { computed } from "@vue/reactivity";
 import { ref } from "vue";
-import LoginVue from "../layout/Login/Login.vue";
-import OptionsSession from "./../layout/Login/OptionSession.vue";
 import { useUserStore } from "./../store/userStore";
+import { validate, validateForm } from "./utils";
 
 const userStore = useUserStore();
 
 const email = ref("");
 const password = ref("");
-const input = (e) => {
-  const regex =
-    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-  if (regex.test(email.value)) {
-    e.target.parentElement.parentElement.classList.remove("error");
-    e.target.parentElement.parentElement.classList.add("success");
-    if (e.key === "Enter") {
-      changeNextModal();
-      const password = document.querySelector("input[type=password]");
-      if (!password) return;
-      e.target.autofocus = false;
-      console.dir(e.target);
-      password.autofocus = true;
-    }
-  } else {
-    e.target.parentElement.parentElement.classList.remove("success");
-    e.target.parentElement.parentElement.classList.add("error");
+const confirpass = ref("");
+
+const inputConfir = computed(() => {
+  if (!password.value) return;
+  return password.value !== confirpass.value ? "error" : "success";
+});
+
+const input = (e) => validate(e, { email, password });
+
+const handleForm = () => {
+  if (validateForm(email.value, password.value, confirpass.value)) {
+    userStore.registerUser(email.value, password.value);
   }
 };
 
-const nextModal = ref(false);
-
-const handleForm = () => {
-  const regex =
-    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-  if (regex.test(email.value) && password.value)
-    userStore.loginUser(email.value, password.value);
-};
-
-const changeNextModal = () => {
-  const regex =
-    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-  if (regex.test(email.value)) nextModal.value = !nextModal.value;
-};
+const btnDisabled = computed(
+  () => !validateForm(email.value, password.value, confirpass.value)
+);
 </script>
 
 <style lang="scss" scoped>
@@ -208,7 +174,7 @@ img {
 }
 
 .form .form-group {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   position: relative;
 }
 
@@ -296,8 +262,8 @@ img {
 }
 
 /* .form-group.success .content-input input {
-  border: 1px solid rgb(6, 224, 97);
-} */
+    border: 1px solid rgb(6, 224, 97);
+  } */
 
 .content-input {
   position: relative;

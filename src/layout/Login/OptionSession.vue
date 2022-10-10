@@ -3,7 +3,7 @@
     <div
       class="col-xl-6 col-md-6 p-2 d-flex justify-content-center align-items-center"
     >
-      <div class="card p-2">
+      <div class="card p-2" @click="auth.loginGoogle">
         <div class="d-flex gap-2 justyfy-content-center align-items-center">
           <img :src="iconGoogle" alt="" />
           <span class="title-icon">Google</span>
@@ -13,7 +13,7 @@
     <div
       class="col-xl-6 col-md-6 p-2 d-flex justify-content-center align-items-center"
     >
-      <div class="card p-1 m-0">
+      <div class="card p-1" @click="auth.loginFacebok">
         <div class="d-flex gap-2 justyfy-content-center align-items-center">
           <i class="fa-brands fa-facebook"></i>
           <span>facebook</span>
@@ -25,6 +25,8 @@
 
 <script setup>
 import iconGoogle from "./../assets/descarga.png";
+import { useUserStore } from "./../../store/userStore";
+const auth = useUserStore();
 </script>
 
 <style lang="scss" scoped>
