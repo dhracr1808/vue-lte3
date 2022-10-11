@@ -6,7 +6,7 @@
 
 <style lang="scss" scoped>
 .toaster-notification {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   padding: 1rem 0 1rem 1rem;

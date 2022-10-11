@@ -40,7 +40,4 @@ const navbar = computed(() => (user.isAuthenticated ? "content-views" : ""));
   position: relative;
   padding-top: 4rem;
 }
-.container {
-  min-height: calc(100vh - (4rem + 80px));
-}
 </style>

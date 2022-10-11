@@ -32,4 +32,13 @@ const date = new Date().getFullYear();
     opacity: 1;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1rem;
+  }
+}
 </style>

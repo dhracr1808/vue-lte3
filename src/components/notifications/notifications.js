@@ -10,21 +10,22 @@ Toaster.prototype.message = function (message) {
 
     const line = document.createElement("div");
     line.classList.add("line");
-    line.style.animation = "3s line-animation ease-in forwards";
+    line.style.animation = "3.5s line-animation ease-in forwards";
     div.appendChild(line);
     this.notification.appendChild(div);
     this.notification.classList.add("active");
 
-    const time = setTimeout(() => div.remove(), 3000);
-
+    const time = setTimeout(() => div.remove(), 4010);
     div.addEventListener("mouseenter", () => {
       clearTimeout(time);
       line.style.animationPlayState = "paused";
+      div.style.animationPlayState = "paused";
     });
 
     div.addEventListener("mouseleave", () => {
       line.style.animationPlayState = "running";
-      setTimeout(() => div.remove(), 2000);
+      div.style.animationPlayState = "running";
+      setTimeout(() => div.remove(), 3000);
     });
   }
 };
