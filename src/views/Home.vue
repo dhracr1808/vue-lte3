@@ -1,13 +1,15 @@
 <template>
   <HomeLayout />
-
-  <button @click="notification">notification</button>
+  <!--   <button @click="notification">notification</button> -->
+  <Line />
 
   <div class="container-data">
     <Chart type="radar" id="myChart" />
     <Chart type="line" id="otrochart" />
     <Chart type="bar" id="charBar" />
   </div>
+
+  <Circle />
 </template>
 
 <script setup>
@@ -16,6 +18,8 @@ import { getToken, onMessage } from "firebase/messaging";
 import { messaging } from "./../firebase";
 import { onMounted } from "vue";
 import HomeLayout from "./../layout/Home/Home.vue";
+import Line from "./../components/graficos/components/Line.vue";
+import Circle from "./../components/graficos/components/Circle.vue";
 import Chart from "./../components/graficos/Chart.vue";
 
 const notification = () => {
