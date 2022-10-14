@@ -19,6 +19,12 @@ const routes = [
     beforeEnter: requireAuth,
   },
   {
+    path: "/widgets",
+    name: "Widgets",
+    component: () => import("./../views/Widgets.vue"),
+    beforeEnter: requireAuth,
+  },
+  {
     path: "/profile",
     name: "Profile",
     component: () => import("./../views/Profile.vue"),

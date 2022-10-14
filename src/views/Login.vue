@@ -92,7 +92,7 @@
           <div class="form-group mt-4">
             <div class="content-input">
               <input
-                type="text"
+                type="password"
                 id="password"
                 class="form-control"
                 placeholder="password"

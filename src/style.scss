@@ -181,6 +181,10 @@
     width: calc(100% - 80px);
     transition: 1s;
   }
+  @media screen and (max-width: 550px) {
+    width: calc(100%);
+    transition: 1s;
+  }
 }
 
 /*Graficos canvas */

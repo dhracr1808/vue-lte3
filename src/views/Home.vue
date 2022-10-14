@@ -1,6 +1,6 @@
 <template>
   <HomeLayout />
-  <!--   <button @click="notification">notification</button> -->
+  <button @click="notification">notification</button>
   <Line />
 
   <div class="container-data">
@@ -42,7 +42,7 @@ const activarMensajes = async () => {
       "BFsg7sgyi9qDovXpW0pP35-bcj_ebdTOBBIn_MtbV3D_67FPtZEOZG1xSEy9p86AMbHUceZXiJgGojv3VVSYtls",
   }).catch((error) => console.log(error));
 
-  /* if (token) console.log("tu token:", token); */
+  if (token) console.log("tu token:", token);
   if (!token) console.log("no tienes token, rey");
 };
 

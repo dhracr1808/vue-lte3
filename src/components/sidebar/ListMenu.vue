@@ -2,6 +2,12 @@
   <div class="content-sidebar">
     <ul>
       <LinksVue to="/" text="dashboard" icon="fa-solid fa-gauge" option="new" />
+      <LinksVue
+        to="/widgets"
+        text="widgets"
+        icon="fa-solid fa-border-all"
+        option="pro"
+      />
       <LabelVue text="components" />
       <LinksVue to="/profile" text="profile" icon="fa-regular fa-user" />
       <LinksVue to="/dashboard" text="notification" icon="fa-regular fa-bell" />
