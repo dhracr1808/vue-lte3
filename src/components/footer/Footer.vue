@@ -1,5 +1,5 @@
 <template>
-  <div class="footer d-flex bg-primary m-0 p-3">
+  <div class="footer d-flex bg-primary bg-gradient m-0 p-3">
     <div>
       <h3 class="text-white m-0 p-0 fs-5 fw-bold">Dashboard</h3>
     </div>

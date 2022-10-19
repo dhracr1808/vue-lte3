@@ -226,3 +226,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+.list-option {
+  @media screen and (max-width: 800px) {
+    opacity: 0;
+  }
+}

@@ -3,45 +3,34 @@
     <h3 class="m-0 fs-5 fw-light">{{ text }}</h3>
     <div class="row mt-2">
       <InfoCard
-        title="Expandable"
+        title="Shadow - None"
         class="bg-primary"
         icon="fa-regular fa-envelope"
+        shadow="shadow-none"
         :collap="true"
       />
       <InfoCard
-        title="Collapsable"
+        title="Shadow - Small"
         class="bg-success"
         icon="fa-regular fa-flag"
         :collap="true"
+        shadow="shadow-sm"
       />
 
       <InfoCard
-        title="Removable"
+        title="Shadow - Regular"
         class="bg-warning"
         icon="fa-solid fa-upload"
         :times="true"
+        shadow="shadow"
       />
 
       <InfoCard
-        title="Maximizable"
+        title="Shadow - Large"
         class="bg-danger"
         icon="fa-regular fa-star"
         :expand="true"
-      />
-      <InfoCard
-        title="Card Refresh"
-        class="bg-primary"
-        icon="fa-regular fa-star"
-        :refresh="true"
-      />
-      <InfoCard
-        title="All together"
-        class="bg-success"
-        icon="fa-regular fa-star"
-        :refresh="true"
-        :collap="true"
-        :times="true"
-        :expand="true"
+        shadow="shadow-lg"
       />
     </div>
   </div>

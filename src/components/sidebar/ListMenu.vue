@@ -8,30 +8,39 @@
         icon="fa-solid fa-border-all"
         option="pro"
       />
-      <LabelVue text="components" />
-      <LinksVue to="/profile" text="profile" icon="fa-regular fa-user" />
-      <LinksVue to="/dashboard" text="notification" icon="fa-regular fa-bell" />
-      <LabelVue text="Pages" />
       <AcordionVue
-        text="forms"
-        icon="fa-brands fa-wpforms"
+        text="Layout Options"
+        icon="fa-regular fa-clone"
+        :elements="elements"
+      />
+
+      <AcordionVue
+        text="Chats"
+        icon="fa-solid fa-chart-pie"
         :elements="elements"
       />
       <AcordionVue
-        text="notifications"
-        icon="fa-regular fa-bell"
-        :elements="element1"
+        text="ui elements"
+        icon="fa-solid fa-tree"
+        :elements="elements"
+      />
+
+      <AcordionVue
+        text="fomrs"
+        icon="fa-regular fa-pen-to-square"
+        :elements="elements"
       />
       <AcordionVue
-        text="notifications"
-        icon="fa-regular fa-bell"
-        :elements="element1"
+        text="tables"
+        icon="fa-solid fa-table"
+        :elements="elements"
       />
-      <AcordionVue
-        text="notifications"
-        icon="fa-regular fa-bell"
-        :elements="element1"
-      />
+      <LabelVue text="Examples" />
+      <LinksVue to="/" text="calendar" icon="fa-regular fa-calendar" />
+      <LinksVue to="/" text="galery" icon="fa-regular fa-image" />
+      <LinksVue to="/" text="notification" icon="fa-regular fa-bell" />
+
+      <LabelVue text="Pages" />
 
       <LabelVue text="socials" />
     </ul>
@@ -49,15 +58,18 @@ provide("toogleAcordion", toogleAcordion);
 
 const elements = [
   {
-    text: "Login",
+    text: "top naviagtion",
     icon: "fa-regular fa-bell",
     path: "login",
   },
   {
-    text: "Register",
+    text: "boxed",
   },
   {
-    text: "data",
+    text: "foxed sidebar",
+  },
+  {
+    text: "foxed sidebar custom",
   },
 ];
 
